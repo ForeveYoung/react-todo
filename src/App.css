@@ -1,38 +1,70 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+body {
+  background-color: black;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.todolist {
+  margin: 50px auto;
+  padding: 16px;
+  min-height: 580px;
+  max-width: 300px;
+  background-color: #72c9cc;
+  background-size: 40px 40px;
+  border-radius: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.heading {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.heading h1 {
+  width: 60%;
+  margin-top: 30px;
+  background-color: #3a93bd;
+  border-radius: 10px;
+  padding: 0.2rem 1.2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todolist form {
+  margin-top: 40px;
+}
+
+.todolist input {
+  border: 0;
+  border-bottom: 3px solid black;
+  background-color: transparent;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  width: 70%;
+}
+
+.todolist button {
+  margin-top: 30px;
+  border: 3px solid black;
+  background-color: #3a93bd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.items {
+  margin: 20px 0 0 30px;
+}
+
+.items ul li {
+  text-align: left;
+  margin: 20px 10px;
+  font-size: 1.4rem;
+  font-weight: 300;
+  list-style-image: url(./red-x.png);
+  cursor: pointer;
 }
