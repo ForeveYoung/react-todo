@@ -7,24 +7,21 @@ function App() {
     const [items, setItems] = useState([]);
 
     function addItem(event) {
-        setItems(prevData => {
-            return [...prevData, input];
-        });
-        
+        setItems(prevData => [...prevData, input]
+        );
         setInput("");
     }
 
     function removeItem(id) {
         setItems(prevData => {
-            return prevData.filter((item, index) => {
-                return index !== id;
-            })
+            return prevData.filter((item, index) => index !== id
+            )
         });
     }
 
     return (
       <div className="todolist">
-          <div className="heading">
+          <div className="header">
               <h1 className="title">To-Do List</h1>
           </div>
               <input
