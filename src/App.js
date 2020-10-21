@@ -25,9 +25,10 @@ function App() {
               <h1 className="title">To-Do List</h1>
           </div>
               <input
-                  type="text"
-                  value={input}
-                  onChange={(event) => {setInput(event.target.value)}}
+                placeholder="Add task..."
+                type="text"
+                value={input}
+                onChange={(event) => {setInput(event.target.value)}}
               />
               <button onClick={addItem}>Add</button>
 
