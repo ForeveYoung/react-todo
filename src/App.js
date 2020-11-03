@@ -6,10 +6,12 @@ function App() {
     const [input, setInput] = useState("");
     const [items, setItems] = useState([]);
 
-    function addItem(event) {
-        setItems(prevData => [...prevData, input]
-        );
-        setInput("");
+    function addItem() {
+        if (input !== ''){
+            setItems(prevData => [...prevData, input]
+            );
+            setInput("");
+        }
     }
 
     function removeItem(id) {
@@ -17,7 +19,7 @@ function App() {
             return prevData.filter((item, index) => index !== id
             )
         });
-    }
+    }   
 
     return (
       <div className="todolist">
@@ -39,9 +41,9 @@ function App() {
                         key={index}
                         id={index}
                         item={item}
-                        onCheck={removeItem}
+                        onRemove={removeItem}
                     />
-                ))}
+                ))}  
             </ul>
           </div>
       </div>
@@ -49,3 +51,5 @@ function App() {
 }
 
 export default App;
+
+

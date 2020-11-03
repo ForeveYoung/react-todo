@@ -1,10 +1,10 @@
 import React from "react";
 
-function TodoItem({ id, item, onCheck }) {
+function TodoItem({ id, item, onRemove}) {
     return (
         <li>
-            <button className='delete-btn' onClick={() => {onCheck(id)}}>Delete</button>
-            {item}  
+            <button className='delete-btn' onClick={() => {onRemove(id)}}>Delete</button>
+            {item} 
         </li>
     )
 }
