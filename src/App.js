@@ -71,6 +71,7 @@ function App() {
               item={item}
               onRemove={removeItem}
               onEdit={yi}
+              
           />
         )) }
 
