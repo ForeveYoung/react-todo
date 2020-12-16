@@ -23,18 +23,17 @@ function App() {
         });
     }   
 
-    function yi(){
+    function editItem(){
      setEdit(true) 
-      
+     console.log(items)
             
     }
 
-    function yyy(index) {
+    function submitEditedItem(index) {
 
         setEdit(false)
-
+        items[0]= inp.current.value;
         console.log(inp.current.value)
-    //    items[0]= inp.current.value
 
     }
 
@@ -62,7 +61,7 @@ function App() {
                 ref={inp}
                 /> 
                 <button type='submit'
-                onClick={yyy}>OK</button>
+                onClick={submitEditedItem}>OK</button>
         </div>
               :                 
                 <TodoItem
@@ -70,7 +69,7 @@ function App() {
               id={index}
               item={item}
               onRemove={removeItem}
-              onEdit={yi}
+              onEdit={editItem}
               
           />
         )) }
