@@ -5,7 +5,8 @@ function TodoItem({ id, item, onRemove, onEdit}) {
     return (
         <li>
             <button className='delete-btn' onClick={() => {onRemove(id)}}>X</button>
-            <span title='Click to edit task' className='item-span'  onClick={() => {onEdit(item)}}>{item}</span>
+            <button className='edit-btn' onClick={() => {onEdit(item, id)}}>Edit</button>
+           {item}
              
         </li>
     )

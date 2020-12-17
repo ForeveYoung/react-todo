@@ -1,12 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import TodoItem from "./components/TodoItem";
 import './App.css';
 
 function App() {
     const [input, setInput] = useState("");
     const [items, setItems] = useState([]);
-    const [edit, setEdit] = useState(false);
-    const inp = useRef('');
 
     function addItem() {
         if (input !== ''){
@@ -23,18 +21,12 @@ function App() {
         });
     }   
 
-    function editItem(){
-     setEdit(true) 
-     console.log(items)
-            
-    }
-
-    function submitEditedItem(index) {
-
-        setEdit(false)
-        items[0]= inp.current.value;
-        console.log(inp.current.value)
-
+    function editItem(item, id){
+       setInput(item)
+               setItems(prevData => {
+            return prevData.filter((item, index) => index !== id
+            )
+        });
     }
 
     return (
@@ -52,18 +44,7 @@ function App() {
 
           <div className="items">
                 <ul>
-                     {items.map((item, index) => (
-              edit ? 
-              <div> 
-                <input 
-                type='text'
-                defaultValue={item}
-                ref={inp}
-                /> 
-                <button type='submit'
-                onClick={submitEditedItem}>OK</button>
-        </div>
-              :                 
+                     {items.map((item, index) => (               
                 <TodoItem
               key={index}
               id={index}

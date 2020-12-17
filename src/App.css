@@ -69,7 +69,8 @@ body {
   margin-right: 10px;
   padding: 5px 10px;
 }
-
-.item-span {
-  cursor: pointer;
+.items .edit-btn {
+  background-color: #bd9e13;
+  margin-right: 20px;
+  padding: 5px 10px;
 }
