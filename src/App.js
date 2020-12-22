@@ -5,6 +5,7 @@ import './App.css';
 function App() {
     const [input, setInput] = useState("");
     const [items, setItems] = useState([]);
+    const [isEdit, setEdit] = useState(false);
 
     function addItem() {
         if (input !== ''){
@@ -12,6 +13,7 @@ function App() {
             );
             setInput("");
         }
+        setEdit(false)
     }
 
     function removeItem(id) {
@@ -22,6 +24,7 @@ function App() {
     }   
 
     function editItem(item, id){
+        setEdit(true)
        setInput(item)
                setItems(prevData => {
             return prevData.filter((item, index) => index !== id
@@ -40,8 +43,11 @@ function App() {
                 value={input}
                 onChange={(event) => {setInput(event.target.value)}}
               />
+              {isEdit ? 
+              <button onClick={addItem}>Confirm</button>
+              :
               <button onClick={addItem}>Add</button>
-
+              }
           <div className="items">
                 <ul>
                      {items.map((item, index) => (               
