@@ -1,72 +1,64 @@
-import React, { useState } from 'react';
-import TodoItem from "./components/TodoItem";
+import React, { useState } from "react";
+import TodoForm from "./components/TodoForm";
+import Todo from "./components/Todo";
 import './App.css';
 
-function App() {
-    const [input, setInput] = useState("");
-    const [items, setItems] = useState([]);
-    const [isEdit, setEdit] = useState(false);
+function TodoList() {
+  const [items, setTodos] = useState([]);
+  const [editId, setEdit] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
-    function addItem() {
-        if (input !== ''){
-            setItems(prevData => [...prevData, input]
-            );
-            setInput("");
-        }
-        setEdit(false)
+  const handleEditChange = (id, text) => {
+    setEdit(id);
+    setInputValue(text);
+  };
+  const addTodo = (todo) => {
+    if (!todo.text || '' ) {
+      return;
     }
 
-    function removeItem(id) {
-        setItems(prevData => {
-            return prevData.filter((item, index) => index !== id
-            )
-        });
-    }   
+    const newTodos = [todo, ...items];
+    setTodos(newTodos);
+  };
 
-    function editItem(item, id){
-        setEdit(true)
-       setInput(item)
-               setItems(prevData => {
-            return prevData.filter((item, index) => index !== id
-            )
-        });
-    }
+  const removeTodo = (id) => {
+    const removedArr = [...items].filter((todoId) => todoId.id !== id);
 
-    return (
-      <div className="todolist">
-          <div className="header">
-              <h1 className="title">To-Do List</h1>
-          </div>
-              <input
-                placeholder="Add task..."
-                type="text"
-                value={input}
-                onChange={(event) => {setInput(event.target.value)}}
-              />
-              {isEdit ? 
-              <button onClick={addItem}>Confirm</button>
-              :
-              <button onClick={addItem}>Add</button>
-              }
-          <div className="items">
-                <ul>
-                     {items.map((item, index) => (               
-                <TodoItem
-              key={index}
-              id={index}
-              item={item}
-              onRemove={removeItem}
-              onEdit={editItem}
-              
-          />
-        )) }
+    setTodos(removedArr);
+  };
 
-            </ul>
-          </div>
+  const editTodo = (id, text, todo) => {
+    let editTodos = items.map((todo) => {
+      if (todo.id === id) {
+        todo.text = text;
+      }
+      return todo;
+    });
+    setTodos(editTodos);
+    setEdit(false);
+  };
+
+  return (
+    <div className='todo-list'>
+      <div className='header'>
+      <h1 className='header'>ToDo List</h1>
       </div>
-    );
+      <TodoForm
+        onSubmit={addTodo} />
+        <div className='items'>
+            <Todo
+        items={items}
+        removeTodo={removeTodo}
+        editTodo={editTodo}
+        handleEditChange={handleEditChange}
+        editId={editId}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      />
+        </div>
+    
+    </div>
+  );
 }
 
-export default App;
-
-
+export default TodoList;
